@@ -26,24 +26,31 @@
  */
 
 #ifndef DBGR_H
+/**
+ * @brief   Include guard for 'dbgr.h'
+ * @details 
+ *  If this macro function is to be used, please implement the following in
+ *      your code.
+ *  \code{.c}
+ *    #define DEBUG 1
+ *  \endcode
+ */
 #define DBGR_H
 
-#ifdef  DEBUG
 /**
  * @brief     debug out
  * @details   Output information specified to by \p fmt to \c stdout.
- * @param[in] fmt A string or string format containing the debug message.
- * @note      There is also an argument parameter, but that is optional.
- * @remark  
- *  \parblock 
- *    If this macro function is to be used, please implement the following in
- *      your code.
- *    \code{.c}
- *      #define DEBUG 1
- *    \endcode
- *  \endparblock
+ * @param[in] fmt A string containing the debug message.
  */
-#define DEBUG_OUT(fmt, ...)                               \
-    { if (DEBUG) {fprintf(stdout, fmt, __VA_ARGS__); } }
-#endif  /* DEBUG  */
+#define DEBUG_OUT(fmt) { if (DEBUG) { fprintf(stdout, fmt); } }
+
+/**
+ * @brief     debug out format
+ * @details   Output information specified to by \p fmt to \c stdout.
+ * @param[in] fmt A string format containing the debug message.
+ * @note      There is also an argument paramater that is to be used in
+ *              conjunction with \p fmt.
+ */
+#define DEBUG_OUTF(fmt, ...)                              \
+    { if (DEBUG) { fprintf(stdout, fmt, __VA_ARGS__); } }
 #endif  /* DBGR_H */
